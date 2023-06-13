@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add Employee</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<h3 class="text-center my-3">Employee Directory</h3>
+	<!-- when page is loaded it will call to getter method given in * for thymeleaf and then when you 
+	submit it will call the setter methods -->
+	<div class="container">
+		<form class action="#" th:action="@{/employee/save}" th:object="${employee}" method="POST">
+		<!-- Here we get the id which we don't want to show we are using just for the Update using id -->
+			<input type="hidden" th:field="*{id}"/>
+			<!-- here we get pre populated value  bcz when form loaded it will call getter method -->
+			<input type="text" th:field="*{firstName}" class="form-control mb-4 col-4" placeholder="First Name">
+			<input type="text" th:field="*{lastName}" class="form-control mb-4 col-4" placeholder="Last Name">
+			<input type="email" th:field="*{email}" class="form-control mb-4 col-4" placeholder="Email">
+			
+			<button type="submit" class="btn btn-success ">Submit</button>
+		</form>
+		<hr>
+		<a th:href="@{/employee/list}" class="btn-warning btn">Back to List</a>	
+	</div>
+</body>
+</html>
